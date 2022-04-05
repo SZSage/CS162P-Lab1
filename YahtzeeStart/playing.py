@@ -10,6 +10,7 @@ import constants
 from validation import getIntInRange
 import scoring
 
+
 # TODO: write userPlay.  I've written the rest for you.
 def userPlay(uScorecard):
     """
@@ -19,6 +20,7 @@ def userPlay(uScorecard):
         set rollCount to 0
         while rollCount < 3 and there are less than 5 dice in keeping
             call roll (the number of dice is 5 - the number of dice that you're keeping)
+            increment roll by 1
             print a message and the dice
             if rollCount < 3
                 call getKeeping
@@ -29,6 +31,21 @@ def userPlay(uScorecard):
         itemIndex = call getScorecardItme
         set the element in the user's scorecard based on the score of the dice in keeping
     """
+    keeping = []
+    rolling = []
+    itemIndex = -1
+    rollCount = 0
+    while rollCount < 3 and len(keeping) < 5:
+        roll(5, keeping)
+
+        # print message and dice
+        if rollCount < 3:
+            getKeeping(rolling, keeping)
+        else:
+            moveRollToKeep(rolling, keeping)
+        # print message and the dice
+    itemIndex = getScorecardItem(uScorecard)
+    uScorecard[itemIndex] = scoring.score(itemIndex, keeping)
 
 
 def computerPlay(cScorecard):
@@ -64,6 +81,7 @@ def getComputerScorecardItem(cScorecard, keeping):
                 max = score
                 indexOfMax = i
     return indexOfMax
+
 
 def getScorecardItem(uScorecard):
     itemIndex = getIntInRange(constants.ONES, constants.YAHTZEE, "What item would you like to score? ")

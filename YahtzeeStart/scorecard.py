@@ -5,6 +5,7 @@
 import constants
 from playing import clear
 
+
 # TODO: write resetScorecard and updateScorecard
 def resetScorecard(scorecard):
     """ takes the 2-d list that represents the scorecard as it's parameter and
@@ -12,6 +13,16 @@ def resetScorecard(scorecard):
     The subtotal, bonus and total should be set to 0.
     It does not return a value but the scorecard is altered by the function
     """
+    # index starts at YAHTZEE
+    for i in range(constants.YAHTZEE + 1):
+        scorecard[constants.USER][i] = constants.EMPTY
+        scorecard[constants.COMPUTER][i] = constants.EMPTY
+
+    for i in range(constants.SUBTOTAL, constants.TOTAL + 1):
+        scorecard[constants.USER][i] = 0
+        scorecard[constants.COMPUTER][i] = 0
+
+
 
 
 def updateScorecard(scorecard):
@@ -19,6 +30,8 @@ def updateScorecard(scorecard):
     calculates the subtotal, bonus and total for both the user and the computer.
     It does not return a value but the scorecard is altered by the function
     """
+    # adds up all of the things between 1 and yahtzee
+
 
 
 def formatCell(value):
@@ -54,7 +67,6 @@ def displayScorecards(scorecard):
     print(border)
     print(lineFormat.format(labels[constants.TOTAL], formatCell(uScorecard[constants.TOTAL]), formatCell(cScorecard[constants.TOTAL]), ""))
     print(border)
-
 
 
 

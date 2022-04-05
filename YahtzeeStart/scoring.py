@@ -14,7 +14,8 @@ def getCounts(dice):
 def getTotal(counts):
     """ this helper function takes the list of counts as it's parameter and returns the sum of the values of the dice
     """
-    return 0
+    Sums = sum(counts)
+    return Sums
 
 
 def hasCount(howMany, counts):
@@ -28,27 +29,28 @@ def hasCount(howMany, counts):
 def scoreOnes(counts):
     """ this function should be used as a model for scoring 2 - 6
     """
+    if
     return counts[constants.ONES] * 1
 
 
 def scoreTwos(counts):
-    return 0
+    return counts[constants.TWOS] * 2
 
 
 def scoreThrees(counts):
-    return 0
+    return counts[constants.THREES] * 3
 
 
 def scoreFours(counts):
-    return 0
+    return counts[constants.FOURS] * 4
 
 
 def scoreFives(counts):
-    return 0
+    return counts[constants.FIVES] * 5
 
 
 def scoreSixes(counts):
-    return 0
+    return counts[constants.SIXES] * 6
 
 
 def scoreThreeOfAKind(counts):

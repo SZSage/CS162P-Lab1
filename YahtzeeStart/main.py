@@ -2,13 +2,15 @@
 
 
 from time import sleep
+import time
 import os
 import random
 
-import constants
+from constants import *
 import scoring
-import scorecard
-import playing
+from scorecard import *
+from playing import *
+
 
 # TODO: write main AFTER you have written and tested each function
 def main():
@@ -34,6 +36,35 @@ def main():
      determine who won and display a message
 
     """
+
+    # this list of list consists of two elements
+    # sets indexes to None
+    # first part consists of user scorecard, second part computer scorecard
+    theScorecard = [[None] * (constants.TOTAL + 1), [None] * (constants.TOTAL + 1)]
+    userTurn = False
+    # calls resetScorecard
+    resetScorecard(theScorecard)
+
+    while theScorecard[USER].count(-1) > 0 and theScorecard[COMPUTER].count(-1) > 0:
+        # set userTurn to opposite to swap
+        userTurn = not userTurn
+        updateScorecard(theScorecard)
+        displayScorecards(theScorecard)
+        if userTurn:
+            print("It's your turn.")
+            sleep(1)
+            # call userPlay
+            userPlay(theScorecard[USER])
+        else:
+            print("Computers turn.")
+            sleep(1)
+            computerPlay(theScorecard[COMPUTER])
+    updateScorecard(theScorecard)
+    displayScorecards(theScorecard)
+    if theScorecard[USER][TOTAL] > theScorecard[COMPUTER][TOTAL]:
+        print("You won!")
+    else:
+        print("The computer won!")
 
 
 # this block is the same all of the time
