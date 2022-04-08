@@ -3,6 +3,7 @@
 """
 
 import constants
+from scoring import *
 from playing import clear
 
 
@@ -23,14 +24,16 @@ def resetScorecard(scorecard):
         scorecard[constants.COMPUTER][i] = 0
 
 
-
-
 def updateScorecard(scorecard):
     """ takes the 2-d list that represents the scorecard as it's parameter and
     calculates the subtotal, bonus and total for both the user and the computer.
     It does not return a value but the scorecard is altered by the function
     """
-    # adds up all of the things between 1 and yahtzee
+    # for subtotal
+    for i in range(constants.ONES, constants.SIXES + 1):
+        # get sum of USER score
+        scorecard[constants.USER][i] =
+        # append to subtotal
 
 
 

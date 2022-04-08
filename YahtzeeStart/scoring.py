@@ -3,19 +3,27 @@
 """
 import constants
 
+
 # TODO: write all of these that I haven't written for you
 def getCounts(dice):
     """ this helper function takes a list of 5 dice as it's parameter and returns an list
         The list contains the number of 1, 2, 3, 4, 5 and 6 represented in the dice
     """
-    return []
+    counts = [0, 0, 0, 0, 0, 0]
+    for i in range(6):
+        counts[i] = dice.count(i + 1)
+    return counts
 
 
 def getTotal(counts):
     """ this helper function takes the list of counts as it's parameter and returns the sum of the values of the dice
     """
-    Sums = sum(counts)
-    return Sums
+    total = 0
+    # get count
+    for i in range(6):
+        # add one to the index
+        total += counts[i] * (i + 1)
+    return total
 
 
 def hasCount(howMany, counts):
@@ -23,13 +31,15 @@ def hasCount(howMany, counts):
     It returns true if any of the values in count match the integer parameter.
     This function is used in scoreThreeOfAKind (for example) to determine if there are 3 of any number.
     """
+    for i in counts:
+        if i == howMany:
+            return True
     return False
 
 
 def scoreOnes(counts):
     """ this function should be used as a model for scoring 2 - 6
     """
-    if
     return counts[constants.ONES] * 1
 
 
@@ -63,11 +73,17 @@ def scoreThreeOfAKind(counts):
 
 
 def scoreFourOfAKind(counts):
-    return 0
+    if hasCount(4, counts) or hasCount(5, counts):
+        return getTotal(counts)
+    else:
+        return 0
 
 
 def scoreFullHouse(counts):
-    return 0
+    if hasCount(2, counts) and hasCount(3, counts):
+        return getTotal(counts)
+    else:
+        return 25
 
 
 def scoreSmallStraight(counts):
@@ -93,11 +109,19 @@ def scoreLargeStraight(counts):
 
 
 def scoreYahtzee(counts):
-    return 0
+    # use score4 of a kind as model
+    if hasCount(5, counts):
+        return 50
+    else:
+
+        return 0
 
 
 def scoreChance(counts):
-    return 0
+    # total = []
+    # total.append(counts[0] * 1)
+    # total.append(counts[1] * 2)
+    return getTotal(counts)
 
 
 def score(whichElement, dice):

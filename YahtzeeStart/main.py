@@ -7,7 +7,7 @@ import os
 import random
 
 from constants import *
-import scoring
+from scoring import *
 from scorecard import *
 from playing import *
 
@@ -34,10 +34,10 @@ def main():
      call updateScorecard
      call displayScorecard
      determine who won and display a message
-
     """
 
-    # this list of list consists of two elements
+
+    # this list of lists consists of two elements
     # sets indexes to None
     # first part consists of user scorecard, second part computer scorecard
     theScorecard = [[None] * (constants.TOTAL + 1), [None] * (constants.TOTAL + 1)]
@@ -65,6 +65,10 @@ def main():
         print("You won!")
     else:
         print("The computer won!")
+
+
+
+
 
 
 # this block is the same all of the time

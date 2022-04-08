@@ -20,7 +20,7 @@ def userPlay(uScorecard):
         set rollCount to 0
         while rollCount < 3 and there are less than 5 dice in keeping
             call roll (the number of dice is 5 - the number of dice that you're keeping)
-            increment roll by 1
+            increment rollCount
             print a message and the dice
             if rollCount < 3
                 call getKeeping
@@ -36,14 +36,16 @@ def userPlay(uScorecard):
     itemIndex = -1
     rollCount = 0
     while rollCount < 3 and len(keeping) < 5:
-        roll(5, keeping)
-
-        # print message and dice
+        roll(5 - len(keeping), rolling)
+        rollCount += 1
+        print("You rolled: ")
+        displayDice(rolling)
         if rollCount < 3:
             getKeeping(rolling, keeping)
         else:
             moveRollToKeep(rolling, keeping)
-        # print message and the dice
+        print("Your dices: ")
+        displayDice(keeping)
     itemIndex = getScorecardItem(uScorecard)
     uScorecard[itemIndex] = scoring.score(itemIndex, keeping)
 
@@ -54,7 +56,7 @@ def computerPlay(cScorecard):
     roll(5, keeping)
     print("The dice the computer rolled: ")
     displayDice(keeping)
-    sleep(5)
+    sleep(1)
     itemIndex = getComputerScorecardItem(cScorecard, keeping)
     cScorecard[itemIndex] = scoring.score(itemIndex, keeping)
 
