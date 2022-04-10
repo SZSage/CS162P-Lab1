@@ -27,7 +27,7 @@ def userPlay(uScorecard):
             else
                 call moveRollToKeep
             end if
-            print a message the the dice
+            print a message and the dice
         itemIndex = call getScorecardItme
         set the element in the user's scorecard based on the score of the dice in keeping
     """

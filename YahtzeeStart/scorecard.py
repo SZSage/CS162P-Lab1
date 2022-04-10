@@ -29,11 +29,11 @@ def updateScorecard(scorecard):
     calculates the subtotal, bonus and total for both the user and the computer.
     It does not return a value but the scorecard is altered by the function
     """
-    # for subtotal
+
+    # subtotal for user
     for i in range(constants.ONES, constants.SIXES + 1):
-        # get sum of USER score
-        scorecard[constants.USER][i] =
-        # append to subtotal
+        userSum = 0
+        scorecard[constants.USER][i] = sum()
 
 
 

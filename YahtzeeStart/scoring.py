@@ -118,9 +118,6 @@ def scoreYahtzee(counts):
 
 
 def scoreChance(counts):
-    # total = []
-    # total.append(counts[0] * 1)
-    # total.append(counts[1] * 2)
     return getTotal(counts)
 
 

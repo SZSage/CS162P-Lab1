@@ -36,24 +36,17 @@ def main():
      determine who won and display a message
     """
 
-
-    # this list of lists consists of two elements
-    # sets indexes to None
-    # first part consists of user scorecard, second part computer scorecard
     theScorecard = [[None] * (constants.TOTAL + 1), [None] * (constants.TOTAL + 1)]
     userTurn = False
-    # calls resetScorecard
     resetScorecard(theScorecard)
 
     while theScorecard[USER].count(-1) > 0 and theScorecard[COMPUTER].count(-1) > 0:
-        # set userTurn to opposite to swap
         userTurn = not userTurn
         updateScorecard(theScorecard)
         displayScorecards(theScorecard)
         if userTurn:
             print("It's your turn.")
             sleep(1)
-            # call userPlay
             userPlay(theScorecard[USER])
         else:
             print("Computers turn.")
@@ -65,10 +58,6 @@ def main():
         print("You won!")
     else:
         print("The computer won!")
-
-
-
-
 
 
 # this block is the same all of the time
