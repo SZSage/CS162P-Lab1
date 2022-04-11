@@ -81,9 +81,9 @@ def scoreFourOfAKind(counts):
 
 def scoreFullHouse(counts):
     if hasCount(2, counts) and hasCount(3, counts):
-        return getTotal(counts)
-    else:
         return 25
+    else:
+        return 0
 
 
 def scoreSmallStraight(counts):

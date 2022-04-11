@@ -52,8 +52,8 @@ def main():
             print("Computers turn.")
             sleep(1)
             computerPlay(theScorecard[COMPUTER])
-    updateScorecard(theScorecard)
-    displayScorecards(theScorecard)
+        updateScorecard(theScorecard)
+        displayScorecards(theScorecard)
     if theScorecard[USER][TOTAL] > theScorecard[COMPUTER][TOTAL]:
         print("You won!")
     else:

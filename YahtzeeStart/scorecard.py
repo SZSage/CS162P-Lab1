@@ -2,7 +2,7 @@
     This module contains all of the functions related to working with the scorecard
 """
 
-import constants
+from constants import *
 from scoring import *
 from playing import clear
 
@@ -15,13 +15,13 @@ def resetScorecard(scorecard):
     It does not return a value but the scorecard is altered by the function
     """
     # index starts at YAHTZEE
-    for i in range(constants.YAHTZEE + 1):
-        scorecard[constants.USER][i] = constants.EMPTY
-        scorecard[constants.COMPUTER][i] = constants.EMPTY
+    for i in range(YAHTZEE + 1):
+        scorecard[USER][i] = EMPTY
+        scorecard[COMPUTER][i] = EMPTY
 
-    for i in range(constants.SUBTOTAL, constants.TOTAL + 1):
-        scorecard[constants.USER][i] = 0
-        scorecard[constants.COMPUTER][i] = 0
+    for i in range(SUBTOTAL, TOTAL + 1):
+        scorecard[USER][i] = 0
+        scorecard[COMPUTER][i] = 0
 
 
 def updateScorecard(scorecard):
@@ -29,11 +29,37 @@ def updateScorecard(scorecard):
     calculates the subtotal, bonus and total for both the user and the computer.
     It does not return a value but the scorecard is altered by the function
     """
+    # for subtotal
+    if scorecard[USER] and scorecard[COMPUTER] != EMPTY:
+        scorecard[USER][SUBTOTAL] = 0
+        scorecard[COMPUTER][SUBTOTAL] = 0
+        for i in range(ONES, SIXES + 1):
+            if scorecard[USER][i] != EMPTY:
+                scorecard[USER][SUBTOTAL] += scorecard[USER][i]
+            if scorecard[COMPUTER][i] != EMPTY:
+                scorecard[COMPUTER][SUBTOTAL] += scorecard[COMPUTER][i]
 
-    # subtotal for user
-    for i in range(constants.ONES, constants.SIXES + 1):
-        userSum = 0
-        scorecard[constants.USER][i] = sum()
+    # for bonus
+    if scorecard[USER][SUBTOTAL] > int(63):
+        scorecard[USER][BONUS] = int(35)
+    if scorecard[COMPUTER][SUBTOTAL] > int(63):
+        scorecard[COMPUTER][BONUS] = int(35)
+
+    # for total score
+    if scorecard[USER] and scorecard[COMPUTER] != EMPTY:
+        scorecard[USER][TOTAL] = 0
+        scorecard[COMPUTER][TOTAL] = 0
+        for i in range(THREE_OF_A_KIND, BONUS + 1):
+            if scorecard[USER][i] != EMPTY:
+                scorecard[USER][TOTAL] += scorecard[USER][i]
+            if scorecard[COMPUTER][i] != EMPTY:
+                scorecard[COMPUTER][TOTAL] += scorecard[COMPUTER][i]
+
+
+
+
+
+
 
 
 
